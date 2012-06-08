@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="main/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/thomast/Desktop/page-debugging/dist/aspectjrt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thomast/Desktop/page-debugging/dist/aspectjweaver.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

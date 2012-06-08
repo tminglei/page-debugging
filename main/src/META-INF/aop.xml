@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aspectj>
+	<aspects>
+		<!-- aspect classes -->
+		<aspect name="tml.pagedebugging.core.TomcatPageHook"/>
+		<aspect name="tml.pagedebugging.core.TomcatStaticPageHook"/>
+		<aspect name="tml.pagedebugging.core.FreemarkerPageHook"/>
+		<aspect name="tml.pagedebugging.core.VelocityPageHook"/>
+	</aspects>
+	<weaver options="-showWeaveInfo">  
+		<!-- specify target weaving scopes -->
+		<include within="org.apache.catalina.core.ApplicationDispatcher"/> 
+		<include within="org.apache.jasper.compiler.Parser"/>
+		<include within="freemarker.core.Environment"/>
+		<include within="org.apache.velocity.Template"/>
+	</weaver>
+</aspectj>
