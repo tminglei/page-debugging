@@ -32,7 +32,6 @@ public class PageDebuggingContext
 	static {
 		_EXECLUDE_PATTERNS = new ArrayList<String>();
 		_EXECLUDE_PATTERNS.add( "WEB-INF/tags/".toLowerCase() );
-		_EXECLUDE_PATTERNS.add( "StandardFunctions.jsp".toLowerCase() );
 		
 		String _excludeds = System.getProperty( "pageDebugging.excluded" );
 		if( _excludeds != null && !_excludeds.trim().equals("") ) 
