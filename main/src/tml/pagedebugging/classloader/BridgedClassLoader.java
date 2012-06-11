@@ -27,14 +27,17 @@ public class BridgedClassLoader extends WebappClassLoader {
 	
 	//--
 	private String pageDebuggingJarPath;
+	private boolean usePdLite = false;
 	
 	public BridgedClassLoader() {
 		pageDebuggingJarPath = getAndCheckJarPath();
+		usePdLite = isUsePageDebuggingLite();
 	}
 	
 	public BridgedClassLoader(ClassLoader parent) {
 		super(parent);
 		pageDebuggingJarPath = getAndCheckJarPath();
+		usePdLite = isUsePageDebuggingLite();
 	}
 	
 	private String getAndCheckJarPath() {
@@ -43,19 +46,30 @@ public class BridgedClassLoader extends WebappClassLoader {
 		if(jarPath != null && !jarPath.trim().equals("")) 
 			return jarPath;
 		else
-			throw new IllegalArgumentException("pageDebuggingJarPath not be set!");
+			return null;
+	}
+	
+	private boolean isUsePageDebuggingLite() {
+		String pdLiteOn = System.getProperty("usePageDebuggingLite");
+		return "On".equalsIgnoreCase(pdLiteOn) || "true".equalsIgnoreCase(pdLiteOn);
 	}
 	
 	@Override
 	protected ResourceEntry findResourceInternal(String name, String path) {
-		return path.endsWith(".class") && toBeBridgedClasses.contains(name) 
-					? loadBridgedClassResource(name, path) 
-							: super.findResourceInternal(name, path);
+		if (usePdLite && pageDebuggingJarPath == null)
+			return super.findResourceInternal(name, path);
+		else if (path.endsWith(".class") && toBeBridgedClasses.contains(name))
+			return loadBridgedClassResource(name, path);
+		else
+			return super.findResourceInternal(name, path);
 	}
 	
 	//----------------------------------------------------- support methods ---
 	
 	private ResourceEntry loadBridgedClassResource(String name, String path) {
+		if (pageDebuggingJarPath == null)
+			throw new IllegalArgumentException("pageDebuggingJarPath not be set!");
+		
 		ResourceEntry entry = new ResourceEntry();
 		
 		System.out.println("[BridgedClassLoader] loading bridged class: " + name);
