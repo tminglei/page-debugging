@@ -15,24 +15,24 @@ public class TomcatPageHookUtils {
 	{
 		/*
 		-- added a comment to current page node, equivalent to:
-		<%	if( com.infowise.pagedebugging.PageDebuggingContext.currentContext().debug()
+		<%	if( tml.pagedebugging.core.PageDebuggingContext.currentContext().debug()
 				&& 
-				com.infowise.pagedebugging.PageDebuggingContext.currentContext().allow( pathName ) ) {
+				tml.pagedebugging.core.PageDebuggingContext.currentContext().allow( pathName ) ) {
 				
-				com.infowise.pagedebugging.PageDebuggingContext.currentContext().enter( pathName );
+				tml.pagedebugging.core.PageDebuggingContext.currentContext().enter( pathName );
 		%>
-			<!-- <%=com.infowise.pagedebugging.PageDebuggingContext.currentContext().currentDebuggingCode() %> - start -->
+			<!-- <%=tml.pagedebugging.core.PageDebuggingContext.currentContext().currentDebuggingCode() %> - start -->
 			
 		<%	} %>
 		*/
 		
-		String beforeScriptlet = "if( com.infowise.pagedebugging.PageDebuggingContext.currentContext().debug() \n" +
+		String beforeScriptlet = "if( tml.pagedebugging.core.PageDebuggingContext.currentContext().debug() \n" +
 								 " && " +
-								 " com.infowise.pagedebugging.PageDebuggingContext.currentContext().allow(\""+pathName+"\") ) { \n" +
+								 " tml.pagedebugging.core.PageDebuggingContext.currentContext().allow(\""+pathName+"\") ) { \n" +
 								 
-								 " com.infowise.pagedebugging.PageDebuggingContext.currentContext().enter(\""+pathName+"\"); \n";
+								 " tml.pagedebugging.core.PageDebuggingContext.currentContext().enter(\""+pathName+"\"); \n";
 		
-		String trackingCode = "com.infowise.pagedebugging.PageDebuggingContext.currentContext().currentDebuggingCode()";
+		String trackingCode = "tml.pagedebugging.core.PageDebuggingContext.currentContext().currentDebuggingCode()";
 		
 		String afterScriptlet = "} \n";
 		
@@ -56,24 +56,24 @@ public class TomcatPageHookUtils {
 	{
 		/*
 		 -- added a comment to current page node, equivalent to:		 
-		<%	if( com.infowise.pagedebugging.PageDebuggingContext.currentContext().debug()
+		<%	if( tml.pagedebugging.core.PageDebuggingContext.currentContext().debug()
 				&& 
-				com.infowise.pagedebugging.PageDebuggingContext.currentContext().allow( pathName ) ) {
+				tml.pagedebugging.core.PageDebuggingContext.currentContext().allow( pathName ) ) {
 		%>
-			<!-- <%=com.infowise.pagedebugging.PageDebuggingContext.currentContext().currentDebuggingCode() %> - end -->
+			<!-- <%=tml.pagedebugging.core.PageDebuggingContext.currentContext().currentDebuggingCode() %> - end -->
 		<%	
-				com.infowise.pagedebugging.PageDebuggingContext.currentContext().exit();
+				tml.pagedebugging.core.PageDebuggingContext.currentContext().exit();
 			} 
 		%>
 		 */
 		
-		String beforeScriptlet = "if( com.infowise.pagedebugging.PageDebuggingContext.currentContext().debug() \n" +
+		String beforeScriptlet = "if( tml.pagedebugging.core.PageDebuggingContext.currentContext().debug() \n" +
 								 " && " +
-								 " com.infowise.pagedebugging.PageDebuggingContext.currentContext().allow(\""+pathName+"\") ) { ";
+								 " tml.pagedebugging.core.PageDebuggingContext.currentContext().allow(\""+pathName+"\") ) { ";
 		
-		String trackingCode = "com.infowise.pagedebugging.PageDebuggingContext.currentContext().currentDebuggingCode()";
+		String trackingCode = "tml.pagedebugging.core.PageDebuggingContext.currentContext().currentDebuggingCode()";
 		
-		String afterScriptlet = "com.infowise.pagedebugging.PageDebuggingContext.currentContext().exit(); \n } \n";
+		String afterScriptlet = "tml.pagedebugging.core.PageDebuggingContext.currentContext().exit(); \n } \n";
 		
 		//--
 		new Node.Scriptlet( beforeScriptlet, new Mark(parent.getStart()), parent );
