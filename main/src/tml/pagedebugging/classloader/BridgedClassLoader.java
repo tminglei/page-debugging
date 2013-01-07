@@ -2,7 +2,6 @@ package tml.pagedebugging.classloader;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.jar.JarEntry;
@@ -12,75 +11,64 @@ import org.apache.catalina.loader.ResourceEntry;
 import org.apache.catalina.loader.WebappClassLoader;
 
 /**
- * p><b>NOTE:</b> Requires Apache Tomcat version 6.0 or higher.
+ * <b>NOTE:</b> Requires Apache Tomcat version 6.0 or higher.
  * @author tminglei
  */
 public class BridgedClassLoader extends WebappClassLoader {
-	private static Set<String> toBeBridgedClasses;
-	
-	static {
-		toBeBridgedClasses = Collections.synchronizedSet( new HashSet<String>() );
-		toBeBridgedClasses.add( "tml.pagedebugging.core.FreemarkerPageHook" );
-		toBeBridgedClasses.add( "tml.pagedebugging.core.VelocityPageHook" );
-		toBeBridgedClasses.add( "tml.pagedebugging.PageDebuggingFilter" );
-	}
+	private static Set<String> toBeBridgedClasses = new HashSet<String>() {
+		{
+			add( "tml.pagedebugging.core.FreemarkerPageHook" );
+			add( "tml.pagedebugging.core.VelocityPageHook" );
+			add( "tml.pagedebugging.PageDebuggingFilter" );
+		}
+	};
 	
 	//--
 	private String pageDebuggingJarPath;
-	private boolean usePdLite = false;
 	
 	public BridgedClassLoader() {
-		pageDebuggingJarPath = getAndCheckJarPath();
-		usePdLite = isUsePageDebuggingLite();
+		pageDebuggingJarPath = getPageDebuggingJarPath();
 	}
 	
 	public BridgedClassLoader(ClassLoader parent) {
 		super(parent);
-		pageDebuggingJarPath = getAndCheckJarPath();
-		usePdLite = isUsePageDebuggingLite();
+		pageDebuggingJarPath = getPageDebuggingJarPath();
 	}
 	
-	private String getAndCheckJarPath() {
-		String jarPath = System.getProperty("pageDebuggingJarPath");
+	private String getPageDebuggingJarPath() {
+		String clazzFullPath = getClass().getResource( getClass().getSimpleName() + ".class" ).getPath();
 		
-		if(jarPath != null && !jarPath.trim().equals("")) 
-			return jarPath;
+		System.out.println("[BridgedClassLoader] clazzFullPath: " + clazzFullPath);
+		
+		int jarPostIndx = clazzFullPath.indexOf(".jar");
+		int filePreIndx = "file:/". length();
+		if (jarPostIndx > 0)
+			return clazzFullPath.substring(filePreIndx, jarPostIndx + 4);
 		else
-			return null;
-	}
-	
-	private boolean isUsePageDebuggingLite() {
-		String pdLiteOn = System.getProperty("usePageDebuggingLite");
-		return "On".equalsIgnoreCase(pdLiteOn) || "true".equalsIgnoreCase(pdLiteOn);
+			throw new IllegalArgumentException("CAN't determine pageDebuggingJarPath!");
 	}
 	
 	@Override
 	protected ResourceEntry findResourceInternal(String name, String path) {
-		if (usePdLite && pageDebuggingJarPath == null)
-			return super.findResourceInternal(name, path);
-		else if (path.endsWith(".class") && toBeBridgedClasses.contains(name))
-			return loadBridgedClassResource(name, path);
+		if (path.endsWith(".class") && toBeBridgedClasses.contains(name))
+			return loadBridgedClassResource(pageDebuggingJarPath, name, path);
 		else
 			return super.findResourceInternal(name, path);
 	}
 	
 	//----------------------------------------------------- support methods ---
 	
-	private ResourceEntry loadBridgedClassResource(String name, String path) {
-		if (pageDebuggingJarPath == null)
-			throw new IllegalArgumentException("pageDebuggingJarPath not be set!");
-		
+	private ResourceEntry loadBridgedClassResource(String jarPath, String name, String path) {
 		ResourceEntry entry = new ResourceEntry();
 		
 		System.out.println("[BridgedClassLoader] loading bridged class: " + name);
 		
 		try {
-			byte[] classBytes = loadClassBytes(pageDebuggingJarPath, path);
+			byte[] classBytes = loadClassBytes(jarPath, path);
 			entry.loadedClass = defineClass(name, classBytes, 0, classBytes.length);
 		}
 		catch (IOException ex) {
-			throw new IllegalArgumentException("Error occurred when loading "
-					+ pageDebuggingJarPath + "#" + name, ex);
+			throw new IllegalArgumentException("Error occurred when loading " + jarPath + "#" + name, ex);
 		}
 		
         synchronized (resourceEntries) {
@@ -121,11 +109,11 @@ public class BridgedClassLoader extends WebappClassLoader {
 			return binaryContent;
 		} 
 		finally {
-			if(binaryStream != null) {
+			if(pageDebuggingJar != null) {
                 try {
-                    binaryStream.close();
+                	pageDebuggingJar.close();
                 } catch (IOException e) { /* Ignore */}
 			}
 		}
-	}	
+	}
 }
