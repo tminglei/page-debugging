@@ -92,7 +92,6 @@ Page-Debugging的功能可简述如下：
 > **<u>支持Tomcat 6.0以上，JBoss-Web 2, Freemarker 2以上以及Velocity 1.5/1.7</u>**
 
 ## 安装和配置
-根据使用场景的不同，可以有不同的安装/配置方式：
 
 ####1. 部署相关的文件到指定目录
 > a) 确保你机器上有 [aspectjweaver.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjweaver.jar)
