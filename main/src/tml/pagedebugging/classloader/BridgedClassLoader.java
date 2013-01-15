@@ -2,6 +2,7 @@ package tml.pagedebugging.classloader;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.jar.JarEntry;
@@ -15,13 +16,13 @@ import org.apache.catalina.loader.WebappClassLoader;
  * @author tminglei
  */
 public class BridgedClassLoader extends WebappClassLoader {
-	private static Set<String> toBeBridgedClasses = new HashSet<String>() {
+	private static final Set<String> toBeBridgedClasses = Collections.unmodifiableSet(new HashSet<String>() {
 		{
 			add( "tml.pagedebugging.core.FreemarkerPageHook" );
 			add( "tml.pagedebugging.core.VelocityPageHook" );
 			add( "tml.pagedebugging.PageDebuggingFilter" );
 		}
-	};
+	});
 	
 	//--
 	private String pageDebuggingJarPath;
