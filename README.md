@@ -27,7 +27,7 @@ Use the aspect technology to insert a HTML comment (tracking code) at begin and 
 ## Installation & Configuration
 ####1. Deploy related files to their specific dirs, and that means:  
 > a) Ensure [aspectjweaver.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjweaver.jar) is on your machine;  
-> b) Place [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging.jar) and [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) under dir ‘[tomcat home]\lib’  
+> b) Place [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging-1.5.2.jar) and [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) under dir ‘[tomcat home]\lib’  
 
 ####2. Let AspectJ take over class loading job, so it can weave them if necessary, which can be simply done by appending JVM argument:  
 `-javaagent:[pathto]\aspectjweaver.jar`  
@@ -63,7 +63,8 @@ Or
 
 Licensing conditions (BSD-style) can be found in LICENSE.txt.  
 
----
+- - - - - - - - - - -  
+- - - - - - - - - - -  
 page-debugging用户指南
 =====================
 ## 概述
@@ -96,7 +97,7 @@ Page-Debugging的功能可简述如下：
 ####1. 部署相关的文件到指定目录
 > a) 确保你机器上有 [aspectjweaver.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjweaver.jar)
 
-> b) 把 [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging.jar) 和 [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) 放到 “[tomcat安装目录]\lib” 下；  
+> b) 把 [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging-1.5.2.jar) 和 [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) 放到 “[tomcat安装目录]\lib” 下；  
 
 ####2. 让AspectJ接管JVM的类加载工作，这样它就可以在需要的时候对某些类进行编织（这里用到的是AspectJ的LTW: Load Time Weaving特性）。为此，我们需要添加如下JVM参数：  
 `-javaagent:[pathto]\aspectjweaver.jar`  
