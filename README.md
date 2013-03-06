@@ -63,6 +63,7 @@ Or
 **Q:** As we know, the switch status info was kept into the user current session. But if we need to change it only in a request life scope, can we? How?  
 **A:** Yes, we can. Append ‘req_pageDebugging=on/off’ to the url, then you can change the configuration temporarily, and the configuration in the session will be kept unchanged.
 
+@author: Minglei Tu (tmlneu@gmail.com)  
 Licensing conditions (BSD-style) can be found in LICENSE.txt.  
 
 - - - - - - - - - - -  
@@ -106,7 +107,7 @@ Page-Debugging的功能可简述如下：
 
   ![configure jvm arguments in eclipse](https://github.com/tminglei/page-debugging/raw/master/doc/configure-jvm-arguments-in-eclipse.png)
  
-> b) 给你的应用配置一个定制的class loader，这样你应用间接用的page debugging tool相关的代码可以被你应用的class loader加载，从page-debugging.jar (别忘了，page-debugging.jar被部署到了: [tomcat_home]\lib);
+> b) 给你的应用配置一个定制的class loader，这样你应用间接用的page debugging tool相关的代码可以被你应用的class loader加载，从page-debugging.jar (别忘了，page-debugging.jar被部署到了: [tomcat_home]\lib);  
 > c) 在Tomcat Server.xml中配上一个用作开关的监听器（Valve），  
 
  ![configure tomcat server.xml (lite)](https://github.com/tminglei/page-debugging/raw/master/doc/configure-tomcat-server-xml.png)
@@ -124,7 +125,7 @@ Page-Debugging的功能可简述如下：
 `-DpageDebugging.switchKey=[new debugging switch key name]`
 
 **Q：**我可以指定某些文件或目录不被track吗？  
-**A：**是的，可以。默认情况下，“/WEB-INF/tags/”目录（包括子目录）下的文件都不会被track。你可以通过以下方式改写或追加：  
+**A：**可以的。默认情况下，“/WEB-INF/tags/”目录（包括子目录）下的文件都不会被track。你可以通过以下方式改写或追加：  
 `-DpageDebugging.excluded=”foo/bar/, tttt.txt”`  
 或者  
 `-DpageDebugging.excluded_append:“foo/bar/, tttt.txt”`  
@@ -137,4 +138,5 @@ Page-Debugging的功能可简述如下：
 **Q：**如前所述，开关状态信息是保存在session里面的。但是如果我只想在某一个request里面临时的改变一下开关，能办到吗？  
 **A：**是的，可以办到。把‘req_pageDebugging=on/off’添加到url，你就可以临时的改变一下开关状态，而保存在session里的开关信息不受影响。
 
+@author: Minglei Tu (tmlneu@gmail.com)  
 Licensing conditions (BSD-style) can be found in LICENSE.txt.  
