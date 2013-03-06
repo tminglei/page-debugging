@@ -25,19 +25,21 @@ Use the aspect technology to insert a HTML comment (tracking code) at begin and 
 > **<u>Supports Tomcat 6.0+, JBoss-Web 2, Freemarker 2+ and Velocity 1.5/1.7.</u>** 
 
 ## Installation & Configuration
-####1. Deploy related files to their specific dirs, and that means:  
+####1. Deploy related files to their specific dirs:  
 > a) Ensure [aspectjweaver.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjweaver.jar) is on your machine;  
 > b) Place [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging-1.5.2.jar) and [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) under dir ‘[tomcat home]\lib’  
 
-####2. Let AspectJ take over class loading job, so it can weave them if necessary, which can be simply done by appending JVM argument:  
+####2. setup:
+> a) Let AspectJ take over class loading job, so it can weave them if necessary, which can be simply done by appending JVM argument:  
 `-javaagent:[pathto]\aspectjweaver.jar`  
 
  ![configure jvm arguments in eclipse](https://github.com/tminglei/page-debugging/raw/master/doc/configure-jvm-arguments-in-eclipse.png)
 
-####3. Add a listener class (a tomcat valve) to runtime environment, so you can turn on/off this tool as you expected:
- ![configure tomcat server.xml (lite)](https://github.com/tminglei/page-debugging/raw/master/doc/configure-tomcat-server-xml-lite.png)
+> b) On Tomcat server.xml, configure a customized class loader for your app, to ensure some page-debugging-tool classes used by app indirectly can be loaded with the same class loader as your app from page-debugging.jar (ps: page-debugging.jar was deployed to [tomcat_home]\lib);  
+> c) Add a listener class (a tomcat valve) to runtime environment, so you can turn on/off this tool as you expected:
+ ![configure tomcat server.xml (lite)](https://github.com/tminglei/page-debugging/raw/master/doc/configure-tomcat-server-xml.png)
 
-####4. Then you can turn on/off this tool by appending “pageDebugging=true/on” or “pageDebugging=false/off” to current page URL. 
+####3. Then， you can turn on/off this tool by appending “pageDebugging=true/on” or “pageDebugging=false/off” to current page URL. 
 > ps: switch status info will be kept during your current session.  
 
 > _Tips:_ pls cleanup tomcat working cache before firstly using it.
@@ -98,15 +100,18 @@ Page-Debugging的功能可简述如下：
 
 > b) 把 [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging-1.5.2.jar) 和 [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) 放到 “[tomcat安装目录]\lib” 下；  
 
-####2. 让AspectJ接管JVM的类加载工作，这样它就可以在需要的时候对某些类进行编织（这里用到的是AspectJ的LTW: Load Time Weaving特性）。为此，我们需要添加如下JVM参数：  
+####2. 配置
+> a) 让AspectJ接管JVM的类加载工作，这样它就可以在需要的时候对某些类进行编织（这里用到的是AspectJ的LTW: Load Time Weaving特性）。为此，我们需要添加如下JVM参数：  
 `-javaagent:[pathto]\aspectjweaver.jar`  
 
   ![configure jvm arguments in eclipse](https://github.com/tminglei/page-debugging/raw/master/doc/configure-jvm-arguments-in-eclipse.png)
  
-####3. 在Tomcat Server.xml中配上一个用作开关的监听器（Valve），  
+> b) 给你的应用配置一个定制的class loader，这样你应用间接用的page debugging tool相关的代码可以被你应用的class loader加载，从page-debugging.jar (别忘了，page-debugging.jar被部署到了: [tomcat_home]\lib);
+> c) 在Tomcat Server.xml中配上一个用作开关的监听器（Valve），  
+
  ![configure tomcat server.xml (lite)](https://github.com/tminglei/page-debugging/raw/master/doc/configure-tomcat-server-xml-lite.png)
 
-####4. 现在，我们就可以通过在当前url后面添加“pageDebugging=true/on”或者 “pageDebugging=false/off”参数来打开/关闭page debugging功能了。
+####3. 现在，我们就可以通过在当前url后面添加“pageDebugging=true/on”或者 “pageDebugging=false/off”参数来打开/关闭page debugging功能了。
 
 > 注：上述配置信息是保存在用户当前session里的。  
 
