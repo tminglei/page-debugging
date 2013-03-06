@@ -109,7 +109,7 @@ Page-Debugging的功能可简述如下：
 > b) 给你的应用配置一个定制的class loader，这样你应用间接用的page debugging tool相关的代码可以被你应用的class loader加载，从page-debugging.jar (别忘了，page-debugging.jar被部署到了: [tomcat_home]\lib);
 > c) 在Tomcat Server.xml中配上一个用作开关的监听器（Valve），  
 
- ![configure tomcat server.xml (lite)](https://github.com/tminglei/page-debugging/raw/master/doc/configure-tomcat-server-xml-lite.png)
+ ![configure tomcat server.xml (lite)](https://github.com/tminglei/page-debugging/raw/master/doc/configure-tomcat-server-xml.png)
 
 ####3. 现在，我们就可以通过在当前url后面添加“pageDebugging=true/on”或者 “pageDebugging=false/off”参数来打开/关闭page debugging功能了。
 
