@@ -16,6 +16,7 @@ import org.apache.catalina.loader.WebappClassLoader;
  * @author tminglei
  */
 public class BridgedClassLoader extends WebappClassLoader {
+	@SuppressWarnings("serial")
 	private static final Set<String> toBeBridgedClasses = Collections.unmodifiableSet(new HashSet<String>() {
 		{
 			add( "tml.pagedebugging.core.FreemarkerPageHook" );
@@ -42,11 +43,16 @@ public class BridgedClassLoader extends WebappClassLoader {
 		System.out.println("[BridgedClassLoader] clazzFullPath: " + clazzFullPath);
 		
 		int jarPostIndx = clazzFullPath.indexOf(".jar");
-		int filePreIndx = "file:/". length();
-		if (jarPostIndx > 0)
-			return clazzFullPath.substring(filePreIndx, jarPostIndx + 4);
-		else
+		if (jarPostIndx > 0) {
+			int filePreIndx = "file:/". length();
+			if (System.getProperty("os.name").toLowerCase().indexOf("windows") != -1) {
+				return clazzFullPath.substring(filePreIndx, jarPostIndx + 4);
+			} else {
+				return clazzFullPath.substring(filePreIndx - 1, jarPostIndx + 4);
+			}
+		} else {
 			throw new IllegalArgumentException("CAN't determine pageDebuggingJarPath!");
+		}
 	}
 	
 	@Override
