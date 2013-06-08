@@ -138,5 +138,5 @@ Page-Debugging的功能可简述如下：
 **Q：**如前所述，开关状态信息是保存在session里面的。但是如果我只想在某一个request里面临时的改变一下开关，能办到吗？  
 **A：**是的，可以办到。把‘req_pageDebugging=on/off’添加到url，你就可以临时的改变一下开关状态，而保存在session里的开关信息不受影响。
 
-@author: Minglei Tu (tmlneu@gmail.com)  
+作者: 涂名雷 (tmlneu@gmail.com)  
 Licensing conditions (BSD-style) can be found in LICENSE.txt.  
