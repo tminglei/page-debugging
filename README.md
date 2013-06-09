@@ -33,7 +33,7 @@ If you're using eclipse with the tomcat plugin, you can do it like this:
  ![configure jvm arguments in eclipse](https://github.com/tminglei/page-debugging/raw/master/doc/configure-jvm-arguments-in-eclipse.png)
 
 ####2. setup tomcat and your application
-> a) Place [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging-1.5.2.jar) and [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) under dir `[tomcat home]\lib`  
+> a) Place [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging-1.5.3.jar) and [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) under dir `[tomcat home]\lib`  
 > b) Configure a customized class loader for your app on tomcat's server.xml, to ensure some page-debugging-tool classes used by app indirectly can be loaded with the same class loader as your app from `page-debugging.jar`;  
 > c) Add a listener class (a tomcat valve) to runtime environment, so you can turn on/off this tool as you expected:  
 
@@ -107,7 +107,7 @@ Page-Debugging 的功能可简述如下：
   ![configure jvm arguments in eclipse](https://github.com/tminglei/page-debugging/raw/master/doc/configure-jvm-arguments-in-eclipse.png)  
 
 ####2. 配置 Tomcat 和你的应用
-> a) 把 [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging-1.5.2.jar) 和 [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) 放到 “[tomcat安装目录]\lib” 下；   
+> a) 把 [page-debugging.jar](https://github.com/tminglei/page-debugging/raw/master/dist/page-debugging-1.5.3.jar) 和 [aspectjrt.jar](https://github.com/tminglei/page-debugging/raw/master/dist/aspectjrt.jar) 放到 “[tomcat安装目录]\lib” 下；   
 > b) 给你的应用配置一个定制的 class loader，这样你应用间接用的 page debugging tool 相关的代码可以被你应用的 class loader 加载，从`page-debugging.jar` (别忘了，`page-debugging.jar`已经被部署到了: `[tomcat_home]\lib`);  
 > c) 在 Tomcat Server.xml 中配上一个用作开关的监听器（Valve），  
 
