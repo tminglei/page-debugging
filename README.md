@@ -45,7 +45,8 @@ If you're using eclipse with the tomcat plugin, you can do it like this:
 ####3. Then， you can turn on/off this tool by appending `pageDebugging=true/on` or `pageDebugging=false/off` to current page URL. 
 > ps: switch status info will be kept during your current session.  
 
-> _Tips:_ pls cleanup tomcat working cache before firstly using it.
+> _Tips 1:_ pls cleanup tomcat working cache before firstly using it.
+> _Tips 2:_ don't forget enable `show comments` at tab `HTML` when you use Firebug to view the page source.
 
 ## FAQ
 **Q:** How to resolve if name conflict occurred with the default debugging switch key name `pageDebugging`?  
@@ -120,7 +121,8 @@ Page-Debugging 的功能可简述如下：
 
 > 注：上述配置信息是保存在用户当前 session 里的。  
 
-> _提示_：初次使用之前，最好清一下 Tomcat 缓存，这样所有的 jsp 都会重新编译。
+> _提示1_：初次使用之前，最好清一下 Tomcat 缓存，这样所有的 jsp 都会重新编译。
+> _提示2_：如果你是通过 Firebug 来看页面源码，记得打开 HTML 标签下的 '显示注释' 开关。
 
 
 ## FAQ
