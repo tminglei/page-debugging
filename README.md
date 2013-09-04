@@ -1,7 +1,7 @@
 Page-Debugging
 ==============
 ## Summary
-Current site pages are always divided into many nested page fragments. These page fragments improved code re-usability, but meantime which also made it more difficult for a web developer to find the right fragment file to modify. Now this tool make the finding easy.
+Current site pages are always divided into many nested page fragments. These page fragments improved code re-usability, but meantime which also made it more difficult for a web developer to find the right fragment file to modify. Now this tool make the finding clear at a glance.
 
 ## Features
 This tool’s functions can be simply described as follows:  
@@ -75,7 +75,7 @@ Licensing conditions (BSD-style) can be found in LICENSE.txt.
 Page-Debugging 用户指南
 =====================
 ## 概述
-现在的系统 Web 页面多半由层层嵌套的页面片段组合合成。这些页面片段在提高代码重用性的同时，也增加了文件查找的困难。这个小工具可以让这个查找过程不那么痛苦。
+现在的系统 Web 页面多半由层层嵌套的页面片段组合合成。这些页面片段在提高代码重用性的同时，也增加了文件查找的困难。这个小工具让这个查找过程简单直观。
 
 ## 功能
 Page-Debugging 的功能可简述如下：  
