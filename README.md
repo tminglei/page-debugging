@@ -49,12 +49,12 @@ If you're using eclipse with the tomcat plugin, you can do it like this:
 > _Tips 2:_ don't forget enable `show comments` at tab `HTML` when you use Firebug to view the page source.
 
 ## FAQ
-**Q:** How to resolve if name conflict occurred with the default debugging switch key name `pageDebugging`?  
-**A:** You can specify a new debugging switch key name by appending JVM argument:  
+**Q1:** How to resolve if name conflict occurred with the default debugging switch key name `pageDebugging`?  
+**A1:** You can specify a new debugging switch key name by appending JVM argument:  
 `-DpageDebugging.switchKey=[new debugging switch key name]`
 
-**Q:** If I want to specify some files or dirs not to be tracked, can I? How?  
-**A:** Yes, you can. By default all files under `/WEB-INF/tags/` (include its sub dirs). If your requirement is different, you can change it by appending one more JVM argument like below:  
+**Q2:** If I want to specify some files or dirs not to be tracked, can I? How?  
+**A2:** Yes, you can. By default all files under `/WEB-INF/tags/` (include its sub dirs). If your requirement is different, you can change it by appending one more JVM argument like below:  
 `-DpageDebugging.excluded=”foo/bar/, tttt.txt”`  
 Or  
 `-DpageDebugging.excluded_append:“foo/bar/, tttt.txt”`
@@ -64,8 +64,8 @@ Or
 >> 2) ‘append:’ means append to current item list.  
 >> 3) Don’t worry about the redundant whitespaces between them.  
 
-**Q:** As we know, the switch status info was kept into the user current session. But if we need to change it only in a request life scope, can we? How?  
-**A:** Yes, we can. Append `req_pageDebugging=on/off` to the url, then you can change the configuration temporarily, and the configuration in the session will be kept unchanged.
+**Q3:** As we know, the switch status info was kept into the user current session. But if we need to change it only in a request life scope, can we? How?  
+**A3:** Yes, we can. Append `req_pageDebugging=on/off` to the url, then you can change the configuration temporarily, and the configuration in the session will be kept unchanged.
 
 @author: Minglei Tu (tmlneu@gmail.com)  
 Licensing conditions (BSD-style) can be found in LICENSE.txt.  
@@ -126,12 +126,12 @@ Page-Debugging 的功能可简述如下：
 
 
 ## FAQ
-**Q:** 如果`pageDebugging`参数名不巧已被占用了，怎么办？  
-**A：**你可以通过JVM参数指定另一个名字，具体这样做：  
+**Q1:** 如果`pageDebugging`参数名不巧已被占用了，怎么办？  
+**A1：**你可以通过JVM参数指定另一个名字，具体这样做：  
 `-DpageDebugging.switchKey=[new debugging switch key name]`
 
-**Q：**我可以指定某些文件或目录不被 track 吗？  
-**A：**可以的。默认情况下，`/WEB-INF/tags/`目录（包括子目录）下的文件都不会被 track。你可以通过以下方式改写或追加：  
+**Q2：**我可以指定某些文件或目录不被 track 吗？  
+**A2：**可以的。默认情况下，`/WEB-INF/tags/`目录（包括子目录）下的文件都不会被 track。你可以通过以下方式改写或追加：  
 `-DpageDebugging.excluded=”foo/bar/, tttt.txt”`  
 或者  
 `-DpageDebugging.excluded_append:“foo/bar/, tttt.txt”`  
@@ -141,8 +141,8 @@ Page-Debugging 的功能可简述如下：
 > > 2)	‘append:’表示追加  
 > > 3)	不用担心多余的空格，page debugging 会抹掉它们的  
 
-**Q：**如前所述，开关状态信息是保存在 session 里面的。但是如果我只想在某一个 request 里面临时的改变一下开关，能办到吗？  
-**A：**是的，可以办到。把`req_pageDebugging=on/off`添加到url，你就可以临时的改变一下开关状态，而保存在 session 里的开关信息不受影响。
+**Q3：**如前所述，开关状态信息是保存在 session 里面的。但是如果我只想在某一个 request 里面临时的改变一下开关，能办到吗？  
+**A3：**可以办到。把`req_pageDebugging=on/off`添加到url，你就可以临时的改变一下开关状态，而保存在 session 里的开关信息不受影响。
 
 作者: 涂名雷 (tmlneu@gmail.com)  
 Licensing conditions (BSD-style) can be found in LICENSE.txt.  
