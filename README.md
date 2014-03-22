@@ -70,12 +70,19 @@ Or
 @author: Minglei Tu (tmlneu@gmail.com)  
 Licensing conditions (BSD-style) can be found in LICENSE.txt.  
 
+**Q4:** I use eclipse 'Run', instead of that tomcat plugin, to run tomcat. This way should also be ok, right? But, after I setup jvm parameters and server.xml as guide above, it doesn't work. Why?
+
+ ![configure eclipse 'Run' tomcat](https://github.com/tminglei/page-debugging/raw/master/doc/eclipse_run_configuration_tomcat.png)
+ 
+**A4:** Well, maybe eclipse didn't use the tomcat server.xml you configured. Pls check the tomcat installation directory you specified in "Preferences > Server > Runtime Environments", and ensure the server.xml was modified as expected.
+
+
 - - - - - - - - - - -  
 - - - - - - - - - - -  
 Page-Debugging 用户指南
 =====================
 ## 概述
-现在的系统 Web 页面多半由层层嵌套的页面片段组合合成。这些页面片段在提高代码重用性的同时，也增加了文件查找的困难。这个小工具让这个查找过程简单直观。
+现在系统的 Web 页面多半由层层嵌套的页面片段组合合成。这些页面片段在提高代码重用性的同时，也增加了文件查找的困难。这个小工具让这个查找过程简单直观。
 
 ## 功能
 Page-Debugging 的功能可简述如下：  
@@ -144,5 +151,13 @@ Page-Debugging 的功能可简述如下：
 **Q3：**如前所述，开关状态信息是保存在 session 里面的。但是如果我只想在某一个 request 里面临时的改变一下开关，能办到吗？  
 **A3：**可以办到。把`req_pageDebugging=on/off`添加到url，你就可以临时的改变一下开关状态，而保存在 session 里的开关信息不受影响。
 
+**Q4：** 我没有用那个 eclipse tomcat 插件，而是直接用的 eclipse “Run”，这样应该也是可以的吧？但是我按上面说的那样配置好了 jvm 参数 和 server.xml，好像不起作用啊。
+
+ ![configure eclipse 'Run' tomcat](https://github.com/tminglei/page-debugging/raw/master/doc/eclipse_run_configuration_tomcat.png)
+ 
+**A4：** 有可能 eclipse 没有使用你配好的那个 server.xml。请检查一下你在 “选项 > 服务器 > 运行环境” 里指定的那个 tomcat 安装目录，确保那个 server.xml 文件已经按我们期望的那样做了修改。
+
+
+------------------------------------------------------------
 作者: 涂名雷 (tmlneu@gmail.com)  
 Licensing conditions (BSD-style) can be found in LICENSE.txt.  
