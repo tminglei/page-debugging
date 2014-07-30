@@ -1,14 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.infowise.fmtools</groupId>
+  <groupId>tminglei</groupId>
   <artifactId>page-debugging</artifactId>
-  <version>1.5.2</version>
+  <version>1.6.0</version>
   <name>page-debugging</name>
   <dependencies>
+	<dependency>
+	    <groupId>org.eclipse.jdt.core.compiler</groupId>
+	    <artifactId>ecj</artifactId>
+	    <version>4.4</version>
+	</dependency>
   	<dependency>
   		<groupId>org.apache.tomcat</groupId>
-  		<artifactId>catalina</artifactId>
-  		<version>6.0.35</version>
+  		<artifactId>tomcat-catalina</artifactId>
+  		<version>8.0.9</version>
   	</dependency>
   	<dependency>
   		<groupId>org.apache.velocity</groupId>
@@ -19,8 +24,8 @@
   	</dependency>
   	<dependency>
   		<groupId>org.apache.tomcat</groupId>
-  		<artifactId>jasper</artifactId>
-  		<version>6.0.35</version>
+  		<artifactId>tomcat-jasper</artifactId>
+  		<version>8.0.9</version>
   	</dependency>
   	<dependency>
   		<groupId>org.freemarker</groupId>
@@ -28,14 +33,14 @@
   		<version>2.3.19</version>
   	</dependency>
   	<dependency>
-  		<groupId>aspectj</groupId>
+  		<groupId>org.aspectj</groupId>
   		<artifactId>aspectjrt</artifactId>
-  		<version>1.5.4</version>
+  		<version>1.7.4</version>
   	</dependency>
   	<dependency>
-  		<groupId>aspectj</groupId>
+  		<groupId>org.aspectj</groupId>
   		<artifactId>aspectjweaver</artifactId>
-  		<version>1.5.4</version>
+  		<version>1.7.4</version>
   	</dependency>
   </dependencies>
 </project>

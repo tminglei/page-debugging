@@ -22,6 +22,7 @@ public aspect FreemarkerPageHook {
 			)
 			
 	{	//-- operations
+		
 		PageDebuggingContext ctx = PageDebuggingContext.currentContext();
 		
     	String fileName = (rootElement != null && rootElement.getTemplate() != null) ? rootElement.getTemplate().getName() : null;

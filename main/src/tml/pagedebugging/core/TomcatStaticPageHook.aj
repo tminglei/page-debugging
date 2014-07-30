@@ -4,7 +4,7 @@ import org.apache.jasper.compiler.TomcatPageHookUtils;
 
 /**
  * Insert tags at the begin and end of the (static) requested resources (file) to help debugging 
- * (compatible with Tomcat 5.5/6.0/7.0, JBoss-Web 2)
+ * (compatible with Tomcat 5.5/6.0/8.0, JBoss-Web 2)
  * 
  * @author tminglei
  */

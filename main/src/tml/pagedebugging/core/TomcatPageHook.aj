@@ -2,7 +2,7 @@ package tml.pagedebugging.core;
 
 /**
  * Insert pagedebugging code at the begin and end of the requested resources (file) to help debugging
- * (compatible with Tomcat 5.5/6.0, JBoss-Web 2)
+ * (compatible with Tomcat 5.5/6.0/8.0, JBoss-Web 2)
  * 
  * @author tminglei
  */
@@ -20,7 +20,7 @@ public privileged aspect TomcatPageHook
 			throws java.io.IOException : 
 					
 		//-- pointcuts
-		this( resourceDispather ) && args( *, response ) 
+		this( resourceDispather ) && args( *, response, .. ) 
 		
 			&& call( void org.apache.catalina.core.ApplicationFilterChain.doFilter(..) )
 			
