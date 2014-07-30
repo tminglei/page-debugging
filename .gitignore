@@ -1,2 +1,5 @@
 /target
 /page-debugging.iml
+.classpath
+.project
+.settings
