@@ -1,5 +1,9 @@
 Page-Debugging
 ==============
+
+_p.s. the `page-debugging-1.5.3.jar` under dir /dist can be used to Tomcat 8 and Java 8 environment. But you should ensure the used `aspectjrt.jar` / `aspectjweaver.jar` correspond to the Java version._
+
+
 ## Summary
 Current site pages are always divided into many nested page fragments. These page fragments improved code re-usability, but meantime which also made it more difficult for a web developer to find the right fragment file to modify. Now this tool make the finding clear at a glance.
 
@@ -81,6 +85,9 @@ Licensing conditions (BSD-style) can be found in LICENSE.txt.
 - - - - - - - - - - -  
 Page-Debugging 用户指南
 =====================
+
+_注： dist 目录下的 `page-debugging-1.5.3.jar` 可以被用于 Tomcat 8 和 Java 8 环境，但是要确保所使用的 `aspectjrt.jar` / `aspectjweaver.jar` 和 Java 版本想匹配。_
+
 ## 概述
 现在系统的 Web 页面多半由层层嵌套的页面片段组合合成。这些页面片段在提高代码重用性的同时，也增加了文件查找的困难。这个小工具让这个查找过程简单直观。
 
