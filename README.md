@@ -86,7 +86,7 @@ Licensing conditions (BSD-style) can be found in LICENSE.txt.
 Page-Debugging 用户指南
 =====================
 
-_**(注： dist 目录下的 `page-debugging-1.5.3.jar` 可以被用于 Tomcat 8 和 Java 8 环境，但是要确保所使用的 `aspectjrt.jar` / `aspectjweaver.jar` 和 Java 版本想匹配。)**_
+_**(注： dist 目录下的 `page-debugging-1.5.3.jar` 可以用于 Tomcat 8 和 Java 8 环境，但是要确保所使用的 `aspectjrt.jar` / `aspectjweaver.jar` 和运行时 Java 版本相匹配。)**_
 
 ## 概述
 现在系统的 Web 页面多半由层层嵌套的页面片段组合合成。这些页面片段在提高代码重用性的同时，也增加了文件查找的困难。这个小工具让这个查找过程简单直观。
